@@ -1,2 +1,3 @@
-# My_Scripts
-A repo containing my own Windows/Linux scripts
+# MyScripts
+
+A repository hosting my Windows/Linux scripts and configuration files!
