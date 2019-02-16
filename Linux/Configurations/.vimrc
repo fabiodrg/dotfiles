@@ -1,6 +1,7 @@
 " General
 
 syntax on			" Enable syntax highlight
+colorscheme onedark
 
 set relativenumber	" Show relative line numbers
 set linebreak		" Break lines at word (requires Wrap lines)
@@ -14,10 +15,7 @@ set tabstop=4
 set shiftwidth=4
 set smartindent		" Enable smart-indent
 
-" Gruvbox theme
-colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
-set background=dark
+set clipboard=unnamedplus
 
 " Advanced 
 set undolevels=1000	" Number of undo levels
