@@ -1,5 +1,14 @@
-" General
+"
+" Plugins managed by vim-plug
+"
+call plug#begin()
+Plug 'sheerun/vim-polyglot'
+Plug 'joshdick/onedark.vim'
+call plug#end()
 
+"
+" General
+"
 syntax on			" Enable syntax highlight
 colorscheme onedark
 
@@ -17,6 +26,8 @@ set smartindent		" Enable smart-indent
 
 set clipboard=unnamedplus
 
+"
 " Advanced 
+"
 set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start
