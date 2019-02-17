@@ -10,6 +10,7 @@ call plug#end()
 " General
 "
 syntax on			" Enable syntax highlight
+let g:onedark_terminal_italics=1
 colorscheme onedark
 
 set relativenumber	" Show relative line numbers
