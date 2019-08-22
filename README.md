@@ -1,3 +1,3 @@
-# MyScripts
+# Dotfiles
 
-A repository hosting my Windows/Linux scripts and configuration files!
+A repository hosting my configuration dotfiles and bash scripts
