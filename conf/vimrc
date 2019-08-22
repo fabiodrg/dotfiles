@@ -3,17 +3,55 @@
 "
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
-Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-sleuth'
+" Linting and syntax checking
+Plug 'w0rp/ale'
+" JavaScript and React
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+" HTML and ESX
+Plug 'mattn/emmet-vim'
+
+let g:airline_theme='minimalist'
 call plug#end()
+
+"
+" ALE
+"
+let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_open_list = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 0 
+let g:ale_fixers = {
+\	'javascript': ['eslint'],
+\	'json': ['fixjson'],
+\	'jsx': ['eslint', 'prettier'],
+\	'python': ['autopep8'],
+\}
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}
+
+"
+" Gruvbox
+"
+colorscheme gruvbox
+let g:gruvbox_italic = '1'
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_improved_strings = '1'
 
 "
 " General
 "
-syntax on			" Enable syntax highlight
-let g:onedark_terminal_italics=1
-colorscheme onedark
-
+set dir=~/.vim/swapfiles// " Path for storing swap files
 set relativenumber	" Show relative line numbers
+
 set linebreak		" Break lines at word (requires Wrap lines)
 set showmatch		" Highlight matching brace
  
