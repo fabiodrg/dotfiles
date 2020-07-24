@@ -1,3 +1,4 @@
+#!/bin/bash
 #VM writeback timeout
 echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs';
 #Enable SATA link power management for host3
@@ -69,11 +70,35 @@ echo 'auto' > '/sys/bus/pci/devices/0000:06:00.0/power/control';
 echo 'disabled' > '/sys/class/net/enp8s0/device/power/wakeup';
 # Wake-on-lan status for device wlp7s0
 echo 'disabled' > '/sys/class/net/wlp7s0/device/power/wakeup';
-# Wake status for USB device 1-14
-# echo 'disabled' > '/sys/bus/usb/devices/1-14/power/wakeup';
-# Wake status for USB device 1-3
-echo 'disabled' > '/sys/bus/usb/devices/1-3/power/wakeup';
-# Wake status for USB device usb1
-echo 'disabled' > '/sys/bus/usb/devices/usb1/power/wakeup';
-# Wake status for USB device usb2
-echo 'disabled' > '/sys/bus/usb/devices/usb2/power/wakeup';
+# =============================================================================
+# Disable wakeup feature for some USB devices
+# =============================================================================
+# My main goal is to disable wakeup on the usb port with my mouse connected. E.g.
+# if I suspend my laptop and I move my wireless mouse it will awake the laptop
+# because the usb port where it's connected, by default, has wakeup feature
+# enabled, i.e. the USB port is in a sleep state and when the connected devices
+# transmits input it will awake the system
+# **HOW**
+# Slightly hard-coded. My mouse manufacturer is Logitech, so I loop through the
+# the usb devices connected to USB HUB 1, which includes all USB type-A ports,
+# webcam, etc. I find the port that has a device which manufacturer is Logitech,
+# then I disable the wakeup power-management feature.
+# **REFERENCES**
+# https://www.kernel.org/doc/html/latest/driver-api/usb/power-management.html
+
+# location for USB HUB1 devices
+USB_HOST_DIR="/sys/bus/usb/devices/usb1/*"
+# mouse manufacturer name
+MOUSE_MFR="Logitech"
+# loop through usb devices with a manufacturer file
+for dev in $USB_HOST_DIR/manufacturer
+do
+	if [ "$(cat $dev)" == "$MOUSE_MFR" ]; then
+		# remove the 'manufacturer' from the file path
+		dev_root_dir=${dev%/*}
+		# construct the directory for wakeup config file
+		wakeup_file=$dev_root_dir/power/wakeup
+		# change file configuration
+		echo 'disabled' > $wakeup_file
+	fi
+done
