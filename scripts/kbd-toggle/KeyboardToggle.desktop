@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=sh kbd-toggle
+GenericName=Enables or disables the keyboard device
+Icon=input-keyboard
+Name=Keyboard Toggler
+StartupNotify=true
+Type=Application
