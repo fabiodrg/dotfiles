@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Configure NetworkManager, disabling DNS management and to never push DNS
+# configurations to systemd-resolved
+function setNetworkManagerDnsMode() {
+  local configPath="/etc/NetworkManager/conf.d"
+  local configFile="$configPath/00-dns.conf"
+  
+  mkdir -p $configPath
+  touch $configFile
+  
+  echo "[main]" >> $configFile
+  echo "dns=none" >> $configFile
+  echo "systemd-resolved=False" >> $configFile
+}
+
+# Setups the DNS servers and security options for systemd-resolved
+function configDnsServers() {
+  local configPath="/etc/systemd/resolved.conf.d"
+  local configFile="$configPath/00-dns-servers.conf"
+
+  mkdir -p $configPath
+  touch $configFile
+
+  # Copy resolved.conf
+  cp resolved.conf $configFile
+}
+
+# Restart NetworkManager and systemd-resolved to apply changes
+function restartServices() {
+  # Enable and restart systemd-resolved (if not running, start it)
+  systemctl enable systemd-resolved && \
+    systemctl restart systemd-resolved && \
+    # Restart NetworkManager
+    systemctl restart NetworkManager
+}
+
+if [[ $EUID -ne 0 ]]; then
+  echo "Please, run as root!"
+  exit
+fi
+
+setNetworkManagerDnsMode && configDnsServers && restartServices
