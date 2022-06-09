@@ -1,0 +1,9 @@
+[Unit]
+Description=Run PowerTOP tunning commands to improve power consumption
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /opt/powertune.sh
+
+[Install]
+WantedBy=multi-user.target
