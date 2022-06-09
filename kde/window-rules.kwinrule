@@ -1,0 +1,14 @@
+[Application settings for slack]
+Description=Application settings for slack
+desktop=-1
+desktoprule=3
+wmclass=slack
+wmclassmatch=1
+
+[Application settings for thunderbird]
+Description=Application settings for thunderbird
+desktop=-1
+desktoprule=3
+wmclass=mail thunderbird
+wmclasscomplete=true
+wmclassmatch=1
