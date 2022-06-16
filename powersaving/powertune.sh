@@ -99,6 +99,11 @@ echo 'disabled' > '/sys/class/net/enp8s0/device/power/wakeup';
 echo 'disabled' > '/sys/class/net/wlp7s0/device/power/wakeup';
 
 # =============================================================================
+# Disable turbo boost via intel_pstate driver
+# =============================================================================
+echo "1" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo;
+
+# =============================================================================
 # Disable wakeup feature for some USB devices
 # =============================================================================
 # My main goal is to disable wakeup on the usb port with my mouse connected. E.g.
