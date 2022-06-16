@@ -53,10 +53,6 @@ Quite handy tool to debug power consumption and also customise system settings t
 - https://docs.fedoraproject.org/en-US/quick-docs/understanding-and-administering-systemd/
 - https://www.freedesktop.org/software/systemd/man/systemd.service.html
 
-## TLP
-
-TODO
-
 ## i915 parameters
 
 TODO
