@@ -9,13 +9,8 @@ user_pref("accessibility.force_disabled", 1);
 
 // video acceleration
 // https://wiki.archlinux.org/title/Firefox#Hardware_video_acceleration
-user_pref("gfx.webrender.all", true);
-user_pref("gfx.x11-egl.force-enabled", true);
-user_pref("gfx.x11-egl.force-disabled", false);
+// https://fedoraproject.org/wiki/Firefox_Hardware_acceleration
 user_pref("media.ffmpeg.vaapi.enabled", true);
-user_pref("media.ffvpx.enabled", false);
-user_pref("media.navigator.mediadatadecoder_vpx_enabled", true);
-user_pref("media.rdd-process.enabled", false);
 
 // privacy
 user_pref("network.captive-portal-service.enabled", false);
