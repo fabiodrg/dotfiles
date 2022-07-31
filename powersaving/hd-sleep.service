@@ -1,0 +1,9 @@
+[Unit]
+Description=hard drive spindown timeout after boot
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/hdparm -q -B 127 -S 12 /dev/sda
+
+[Install]
+WantedBy=multi-user.target

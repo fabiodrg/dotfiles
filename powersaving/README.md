@@ -56,3 +56,7 @@ Quite handy tool to debug power consumption and also customise system settings t
 ## i915 parameters
 
 TODO
+
+## HD Spindown
+
+Configures the HD spindown timeout for 1 minute, as I rarely use the HD in my system. Saves power and reduces noise!
